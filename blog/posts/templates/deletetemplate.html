@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="container">
+
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="card text-bg-danger mb-3" style="max-width: 25rem;">
+            <form class="form" method="POST" action="">
+                {% csrf_token %}
+                <div class="card-header">¿Delete?</div>
+                <div class="card-body">
+                  <h5 class="card-title">You will delete the POST " {{post.title}} "</h5>
+                  <input class="btn btn-danger" type="submit" value="Confirm">
+                  <a type="button" class="btn btn-secondary" href="{{request.GET.next}}">Go back</a>
+                </div>
+            </form>
+           
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

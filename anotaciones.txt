@@ -1,0 +1,68 @@
+en static instalamos bootstrap 
+
+copiamos linea 9 y 15 de index html para instalar el bootstrap 
+
+las animaciones funcionan con scripts de js 
+
+la seccion de layouts de bootstrap es necesaria para acomodar los containers o elementos del html 
+
+row cols auto adapta su contenido al tamaño de la pagina 
+
+include en html añade todo el codigo del html que se llama en donde se lo llama 
+
+
+-------------
+
+
+usamos querysets para enviar la informacion que llega por post desde el admin manager a las cards 
+
+{% for post in posts %} ////// por cada post que agreguemos, agrega una tarjeta, pues itera dependiendo la cantidad de registros que haya en post
+      <div class="col">
+        <div class="card" style="width: 23rem;">
+          <img src="{{post.image}}" class="card-img-top" alt="..."> ////// enviamos por parametro la imagen
+          <div class="card-body">
+            <p class="card-text"> {{post.title}} </p> /////enviamos por parametro el titulo
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    {% endfor %}
+
+
+
+<a href="{% url 'post' post.id %}" class="btn btn-primary">View More..</a>
+
+al tocar nos redirige a post detail(post) donde tambien esta url espera el parametro de la pk del posta
+asique le enviamos la pk correspondiente al post que la card recibe (es decir el post que muestra la dicha card)
+
+-------------------------
+
+
+{% for field in form %} itera por cada campo que tenga el formulario e imprime dicho campo
+
+{{field.label}} indicamos label para que aparezca el texto que acompaña al input
+<br>
+{{field}} printea el field 
+<br>
+{% endfor %}
+
+
+ href="{% url 'delete' post.id %}" nos redirecciona a la url de delete y le envia junto a ella la id del post detail 
+ en el que estamos situados 
+
+ def delete(request, pk):
+    post = Post.objects.get(id=pk)
+
+esta funcion es a donde lo redirecciona y envia la id, que actua en el registro de la bbdd que contenga una pk 
+que coincida con la id del post dessde el que tocamos delete 
+
+{% url 'delete' post.id %}?next=/post/{{post.id}}"  en next guardamos la url del post en el que tocamos delete
+ <a type="button" class="btn btn-secondary" href="{{request.GET.next}}">Go back</a> 
+ si tocamos go back pide por peticion la url que esta almacenada en next y nos redirige ahi.
+ la pide por request porque pertenece a informacion almacenada en la url, recordemos que el id del post
+ se guarda mediante uuid en la url 
+ 
+  
+

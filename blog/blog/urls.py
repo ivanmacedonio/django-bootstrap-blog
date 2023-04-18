@@ -15,7 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from posts.views import *
+from django.conf import settings
+from django.conf.urls.static import static 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', index, name='index'),
+    path('post/<str:pk>', post, name='post'),
+    path('postcreate/', formcreate, name="postcreate"),
+    path('delete/<str:pk>', delete, name='delete'),
+    path('update/<str:pk>', update, name= 'update'),
 ]
+
+urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

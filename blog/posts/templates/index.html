@@ -1,0 +1,55 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+    
+
+<style>
+.card {
+    
+    text-align: center;
+    margin: 0 auto;
+    
+}
+
+
+.col{
+ 
+  padding-left: 36px;
+  padding-right: 36px;
+  margin-top: 3rem;
+ 
+}
+</style>
+
+
+
+
+
+
+
+    
+<div class="container">
+
+
+    
+
+
+    
+      {% for post in posts %}
+      <div class="col">
+        <div class="card" style="width: 23rem;">
+          <img src="{{post.image}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text"> {{post.title}} </p>
+            <a href="{% url 'post' post.id %}" class="btn btn-primary">View More..</a>
+          </div>
+        </div>
+      </div>
+
+    
+
+    {% endfor %}
+
+</div>
+{% endblock %}

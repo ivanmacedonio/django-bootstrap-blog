@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>{{post.title}}</h1>
+    <br>
+    <h3>{{post.subtitle}}</h3>
+    <br>
+    <p>{{post.description}}
+    </p>
+
+    <a type="button" class="btn btn-danger" href="{% url 'delete' post.id %}?next=/post/{{post.id}}">Delete</a>
+    <a type="button" class="btn btn-light" href="{% url 'update' post.id %}">Update</a>
+
+</div>
+{% endblock %}
